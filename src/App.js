@@ -1,18 +1,32 @@
-// import React from 'react';  babel imports react for u cause it encounters jsx
-import ReactDOM from 'react-dom';
-//import Pet from './Pet';
-import SearchParams from './SearchParams';
+import { render } from "react-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Details from "./Details";
+import SearchParams from "./SearchParams";
+import { StrictMode } from "react";
 
 const App = () => {
   return (
     <div>
-      <h1>Adopt Me!</h1>
-      {/* <Pet name="Luna" animal="Dog" breed="Havanese" />
-      <Pet name="Peeper" animal="Bird" breed="Cocatiel" />
-      <Pet name="Sudo" animal="Dog" breed="Weaten Terrier" /> */}
-      <SearchParams />
+      <Router>
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
+        <Switch>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+          <Route path="/">
+            <SearchParams />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
