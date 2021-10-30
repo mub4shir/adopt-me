@@ -2,10 +2,8 @@
   "name": "adopt-me",
   "version": "1.0.0",
   "description": "The Adopt Me pet adoption app",
-  "homepage": "https://mub4shir.github.io/adopt-me",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "npm run build&&gh-pages -d build",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "parcel src/index.html"
