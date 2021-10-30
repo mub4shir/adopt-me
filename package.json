@@ -8,7 +8,7 @@
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "parcel src/index.html"
   },
-  "author": "Brian Holt <btholt+citrv6@gmail.com>",
+  "author": "Mubashir Ali <mubashir11131719@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "7.12.16",
