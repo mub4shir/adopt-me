@@ -34982,7 +34982,7 @@ class Carousel extends _react.Component {
 }
 
 _defineProperty(Carousel, "defaultProps", {
-  images: ["http://pets-images.dev-apis.com/pets/none.jpg"]
+  images: ["https://pets-images.dev-apis.com/pets/none.jpg"]
 });
 
 var _default = Carousel;
@@ -35153,11 +35153,11 @@ class Details extends _react.Component {
       showModal: !this.state.showModal
     }));
 
-    _defineProperty(this, "adopt", () => window.location = "http://bit.ly/pet-adopt");
+    _defineProperty(this, "adopt", () => window.location = "https://bit.ly/pet-adopt");
   }
 
   async componentDidMount() {
-    const res = await fetch(`http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`);
+    const res = await fetch(`https://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`);
     const json = await res.json();
     this.setState(Object.assign({
       loading: false
@@ -35285,7 +35285,7 @@ const Pet = ({
   location,
   id
 }) => {
-  let hero = 'http://pets-images.dev-apis.com/pets/none.jpg';
+  let hero = "https://pets-images.dev-apis.com/pets/none.jpg";
 
   if (images.length) {
     hero = images[0];
@@ -35381,7 +35381,7 @@ const localCache = {};
 
 function useBreedList(animal) {
   const [breedList, setBreedList] = (0, _react.useState)([]);
-  const [status, setStatus] = (0, _react.useState)('unloaded');
+  const [status, setStatus] = (0, _react.useState)("unloaded");
   (0, _react.useEffect)(() => {
     if (!animal) {
       setBreedList([]);
@@ -35393,12 +35393,12 @@ function useBreedList(animal) {
 
     async function requestBreedList() {
       setBreedList([]);
-      setStatus('loading');
-      const res = await fetch(`http://pets-v2.dev-apis.com/breeds?animal=${animal}`);
+      setStatus("loading");
+      const res = await fetch(`https://pets-v2.dev-apis.com/breeds?animal=${animal}`);
       const json = await res.json();
       localCache[animal] = json.breeds || [];
       setBreedList(localCache[animal]);
-      setStatus('loaded');
+      setStatus("loaded");
     }
   }, [animal]);
   return [breedList, status];
@@ -35437,7 +35437,7 @@ const SearchParams = () => {
   }, []);
 
   async function requestPets() {
-    const res = await fetch(`http://pets-v2.dev-apis.com/pets?animal=${animal}&&location=${location}&&breed=${breed}`);
+    const res = await fetch(`https://pets-v2.dev-apis.com/pets?animal=${animal}&&location=${location}&&breed=${breed}`);
     const json = await res.json(); // console.log(json);
 
     setPets(json.pets);
@@ -35658,7 +35658,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59530" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49460" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
