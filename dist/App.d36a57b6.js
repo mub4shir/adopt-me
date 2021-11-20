@@ -35427,6 +35427,7 @@ const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
   const [location, setLocation] = (0, _react.useState)("");
+  const [name, setName] = (0, _react.useState)("");
   const [animal, setAnimal] = (0, _react.useState)("");
   const [breed, setBreed] = (0, _react.useState)("");
   const [pets, setPets] = (0, _react.useState)([]);
@@ -35438,9 +35439,20 @@ const SearchParams = () => {
 
   async function requestPets() {
     const res = await fetch(`https://pets-v2.dev-apis.com/pets?animal=${animal}&&location=${location}&&breed=${breed}`);
-    const json = await res.json(); // console.log(json);
+    const json = await res.json(); //console.log(json);
 
     setPets(json.pets);
+  }
+
+  const handleFilter = e => {
+    setName(e.target.value);
+    searchByName(pets);
+  };
+
+  function searchByName(pets) {
+    const matched = pets.filter(pet => pet.name.toLowerCase().includes(name.toLowerCase()));
+    setPets(matched);
+    console.log(matched);
   }
 
   return (
@@ -35465,6 +35477,18 @@ const SearchParams = () => {
             onChange: e => setLocation(e.target.value),
             value: location,
             placeholder: "Location"
+          })]
+        }),
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsxs)("label", {
+          htmlFor: "name",
+          children: ["Name",
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("input", {
+            id: "name",
+            onChange: handleFilter,
+            value: name,
+            placeholder: "name"
           })]
         }),
         /*#__PURE__*/
@@ -35658,7 +35682,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49460" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61127" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

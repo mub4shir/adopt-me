@@ -7,6 +7,7 @@ const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
   const [location, setLocation] = useState("");
+  const [name, setName] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
@@ -21,9 +22,22 @@ const SearchParams = () => {
       `https://pets-v2.dev-apis.com/pets?animal=${animal}&&location=${location}&&breed=${breed}`
     );
     const json = await res.json();
-    // console.log(json);
+    //console.log(json);
     setPets(json.pets);
   }
+
+  const handleFilter = (e) => {
+    setName(e.target.value);
+    searchByName(pets);
+  };
+  function searchByName(pets) {
+    const matched = pets.filter((pet) =>
+      pet.name.toLowerCase().includes(name.toLowerCase())
+    );
+    setPets(matched);
+    console.log(matched);
+  }
+
   return (
     <div className="search-params">
       <form
@@ -39,6 +53,15 @@ const SearchParams = () => {
             onChange={(e) => setLocation(e.target.value)}
             value={location}
             placeholder="Location"
+          />
+        </label>
+        <label htmlFor="name">
+          Name
+          <input
+            id="name"
+            onChange={handleFilter}
+            value={name}
+            placeholder="name"
           />
         </label>
         <label htmlFor="animal">
